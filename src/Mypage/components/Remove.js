@@ -1,8 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { Redirect } from "react-router";
 
 function Remove({match}){
     const [password, setPassword] = useState();
+    const [removeCheck, setRemoveCheck] = useState(false);
 
     function onChange(e){
         setPassword(e.target.value);
@@ -16,6 +18,8 @@ function Remove({match}){
             .then(function (response) {
               console.log("성공");
               alert("삭제성공");
+              window.sessionStorage.removeItem("user");
+              setRemoveCheck(true);
             })
             .catch(function (error) {
               console.log("실패");
@@ -29,10 +33,19 @@ function Remove({match}){
 
     return(
         <>
+            {
+                removeCheck ? 
+                <>
+                <Redirect to="/"></Redirect>
+                </>
+                :
+                <>
                 본인확인<br/>
                 <label>비밀번호 입력</label>
                 <input type="text" onChange={onChange}/>
                 <button onClick={onCheck}>탈퇴</button>
+                </>
+            }
         </>
     );
 }
