@@ -96,7 +96,7 @@ function PasswordModify(match){
         <>
         {
             modifyCheck ?
-            <Redirect to={`${match.url}`}></Redirect>
+            <Redirect to="/myPage"></Redirect>
             :
             <>
             비밀번호 변경
