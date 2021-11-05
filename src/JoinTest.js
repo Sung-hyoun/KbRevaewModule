@@ -31,6 +31,8 @@ export default function JoinTest() {
   const [emailCheck, setEmailCheck] = useState(false);
   const [passwordCheck, setPasswordCheck] = useState(false);
   const [code, setCode] = useState();
+  const [mobile, setMobile] = useState();
+  const [mobileMessage, setMobileMessage] = useState({text:"", color:""});
   const form = useRef();
 
   //렌더링 시 기존 유저들의 정보를 가져온다
@@ -117,6 +119,8 @@ export default function JoinTest() {
       setUser({ ...user, userPassword: e.target.value });
     } else if (name === "name") {
       setUser({ ...user, userName: e.target.value });
+    } else if (name === "phonNo"){
+      setMobile({...user, userMobile: e.target.value});
     }
     console.log(`${e.target.name} : ${e.target.value}`);
   }
@@ -269,6 +273,17 @@ export default function JoinTest() {
       } else {
         setNameMessage({ text: "", color: "" });
       }
+    }else if(e.target.name === "phonNo"){
+      if (e.target.value === "") {
+        setMobileMessage({ text: "필수 정보입니다..", color: "red" });
+      } else{
+        var regExp = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
+        if(regExp.test(e.target.value)){
+          setMobileMessage({ text: "", color: "" });
+        }else{
+          setMobileMessage({ text: "형식에 맞지 않습니다.", color: "red" });
+        }
+      }
     }
   }
 
@@ -385,6 +400,8 @@ export default function JoinTest() {
             ) : (
               <p></p>
             )}
+            <input type="text" name="phonNo" placeholder="휴대전화번호" onChange={onChange} onBlur={MessageSet}/>
+            {mobileMessage.text !== "" ? <p style={{fonsSize:5, color: `${mobileMessage.color}`}}>{mobileMessage.text}</p> : <p></p>}
             <input type="submit" value="회원가입" />
           </form>
 

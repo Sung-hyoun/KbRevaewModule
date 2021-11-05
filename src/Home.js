@@ -14,7 +14,6 @@ export default function Home(){
        //액세스토큰
        console.log(naver_id_login.oauthParams.access_token);
        const {data} = await axios.post("http://localhost:8081/user/naverLogin",accessToken);
-       console.log(data);
         if(data !== undefined && data !== ""){
             const naverLogin = new window.naver.LoginWithNaverId({
                 clientId:"GFRk_SJiZVzSpToWr01V",
@@ -22,10 +21,11 @@ export default function Home(){
                 isPopup: false, // popup 형식으로 띄울것인지 설정
               });
             naverLogin.init();
-            
+            console.log(data);
             if((data.response.email === undefined || data.response.email == null )&&
                 (data.response.nickname === undefined || data.response.nickname == null)&&
-                (data.response.name === undefined || data.response.name == null)
+                (data.response.name === undefined || data.response.name == null) &&
+                (data.response.mobile === undefined || data.response.mobile == null)
             ){
                 naverLogin.reprompt(); 
             }
@@ -43,6 +43,9 @@ export default function Home(){
                 naverLogin.reprompt();
                 alert("이름은 필수 정보입니다.");   
                 return;
+            }else if(data.response.mobile === undefined || data.response.mobile == null){
+                naverLogin.reprompt();
+                alert("휴대전화번호는 필수 정보입니다.")
             }
             else{
                 console.log("성공");

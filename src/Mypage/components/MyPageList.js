@@ -9,7 +9,7 @@ function MyPageList({ match }) {
       <div className={styles.MyPage_List}>
         <table width="900px" height="700px">
           <tr>
-            <td>
+            <td className={styles.bottom}>
               <Link to={`${match.url}/profile`}>
                 <div name="profile">
                   <li>
@@ -24,7 +24,7 @@ function MyPageList({ match }) {
               </Link>
             </td>
 
-            <td>
+            <td className={styles.bottom}>
               <Link to={`${match.url}/modify`}>
                 <div name="modify">
                   <li>
@@ -41,7 +41,7 @@ function MyPageList({ match }) {
           </tr>
 
           <tr>
-            <td>
+            <td className={styles.bottom}>
               <Link to={`${match.url}/remove`}>
                 <div name="remove">
                   <li>
@@ -55,7 +55,7 @@ function MyPageList({ match }) {
                 </div>
               </Link>
             </td>
-            <td>
+            <td className={styles.bottom}>
               <Link to={`${match.url}/passwordModify`}>
                 <div name="passwordModify">
                   <li>
