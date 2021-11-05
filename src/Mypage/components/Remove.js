@@ -13,6 +13,7 @@ function Remove({match}){
     function onCheck(){
         let user = JSON.parse(window.sessionStorage.getItem("user"));
         if(user.userPassword === password){
+            console.log(user);
             axios
             .delete(`http://localhost:8081/user/${user.userEmail}`, user)
             .then(function (response) {
@@ -22,6 +23,7 @@ function Remove({match}){
               setRemoveCheck(true);
             })
             .catch(function (error) {
+                console.log(user);
               console.log("실패");
               alert("삭제실패");
             });
