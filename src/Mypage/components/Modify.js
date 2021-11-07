@@ -4,7 +4,7 @@ import { Redirect } from "react-router";
 
 function Modify(){
     const [getData, setGetData] = useState([]);
-    const [user,setUser] = useState(JSON.parse(sessionStorage.getItem("user")));
+    const [user] = useState(JSON.parse(sessionStorage.getItem("user")));
     const [userNickname, setUserNickname] = useState(user.userNickname);
     const [mobile, setMobile] = useState(user.mobile);
     const [check, setCheck] = useState(false);

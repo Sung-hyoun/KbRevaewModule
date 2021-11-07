@@ -4,7 +4,6 @@ import { Redirect } from "react-router";
 
 function PasswordModify(match){
     const [password,setPassword] = useState();
-    const [passwordCheck,setPasswordCheck] = useState();
     const [newPassword, setNewPassword] = useState();
     const [passwordMessage,setPasswordMessage] = useState({text:'',color:''});
     const [newPasswordMessage, setNewPasswordMessage] = useState({text:'',color:''});
