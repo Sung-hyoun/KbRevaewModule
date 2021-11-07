@@ -401,7 +401,7 @@ export default function JoinTest() {
               <p></p>
             )}
             <input type="text" name="phonNo" placeholder="휴대전화번호" onChange={onChange} onBlur={MessageSet}/>
-            {mobileMessage.text !== "" ? <p style={{fonsSize:5, color: `${mobileMessage.color}`}}>{mobileMessage.text}</p> : <p></p>}
+            {mobileMessage.text !== "" ? <p style={{fontSize:5, color: `${mobileMessage.color}`}}>{mobileMessage.text}</p> : <p></p>}
             <input type="submit" value="회원가입" />
           </form>
 
